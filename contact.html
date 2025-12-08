@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Metra</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>Metra</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="jobs.html">Find Jobs</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html" class="active">Contact Us</a></li>
+                <li><a href="admin/login.html" class="admin-btn">Admin</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <h2 class="fade-in">Contact Us</h2>
+            <div class="contact-content">
+                <div class="contact-form slide-up">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+                <div class="contact-info slide-up">
+                    <h3>Get in Touch</h3>
+                    <p>📧 Email: kumamediannancy45@metra.com</p>
+                    <p>📞 Phone: +23768779896</p>
+                    <p>📍 Address: Mile 10 Bamenda Bambili</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Metra Job Seeking Platform. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = this.querySelector('input[name="name"]').value;
+            const email = this.querySelector('input[name="email"]').value;
+            const message = this.querySelector('textarea[name="message"]').value;
+            
+            // WhatsApp number (237676763842)
+            const whatsappNumber = '237676763842';
+            
+            // Create formatted message for WhatsApp
+            const whatsappMessage = `*New Contact Form Submission*\n\nName: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+            
+            // Encode message for URL
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+            
+            // WhatsApp API URL
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+            
+            // Open WhatsApp
+            window.open(whatsappUrl, '_blank');
+            
+            alert('Thank you for your message! Opening WhatsApp to send your message.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
